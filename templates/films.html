@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des films</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .film-img {
+            max-width: 100px; /* Ajustez la largeur maximale de l'image */
+            max-height: 150px; /* Ajustez la hauteur maximale de l'image */
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des films</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Acteurs</th>
+                <th>Classification</th>
+                <th>Nombre de notes</th>
+                <th>Année</th>
+                <th>Genre</th>
+                <th>Image</th>
+                <th>Réalisateurs</th>
+                <th>Scénaristes</th>
+                <th>Anecdote</th>
+                <th>Description (français)</th>
+                <th>ID Utilisateur</th>
+                <!-- Ajoutez d'autres colonnes si nécessaire -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for film in all_films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.actors }}</td>
+                <td>{{ film.contentRating }}</td>
+                <td>{{ film.ratingCount }}</td>
+                <td>{{ film.year }}</td>
+                <td>{{ film.genre }}</td>
+                <td><img class="film-img" src="{{ film.img_url }}" alt="{{ film.titre }}"></td>
+                <td>{{ film.directors }}</td>
+                <td>{{ film.scenarists }}</td>
+                <td>{{ film.anecdote }}</td>
+                <td>{{ film.desc_fr }}</td>
+                <td>{{ film.user_id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Les balises head restent les mêmes -->
+</head>
+<body>
+    <div class="container">
+        <p>Connecté en tant que {{ username }}</p>
+
+        <h2>Films de l'utilisateur</h2>
+        {% if user_movies %}
+            <ul>
+                {% for user_movie in user_movies %}
+                    <li>
+                        {{ user_movie.movie_title }}
+                        <form method="POST" action="{{ url_for('delete_movie', movie_id=user_movie.id) }}" style="display:inline;">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun film ajouté.</p>
+        {% endif %}
+
+        <!-- Formulaire pour ajouter un film -->
+        <form method="POST" action="/user_movies">
+            <label for="movie_title">Ajouter un film :</label>
+            <input type="text" id="movie_title" name="movie_title" required>
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <p><a href="/">Retour à la page d'accueil</a></p>
+    </div>
+</body>
+</html>

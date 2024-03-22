@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Les balises head restent les mêmes -->
+</head>
+<body>
+    <div class="container">
+        <p>Connecté en tant que {{ username }}</p>
+
+        <!-- Formulaire pour saisir le film -->
+        <form method="POST" action="/recommendations">
+            <label for="movie_title">Choisissez un film :</label>
+            <input type="text" id="movie_title" name="movie_title" required>
+            <button type="submit">Obtenir des recommandations</button>
+        </form>
+
+        <h2>Recommandations de films</h2>
+        {% if recommendations %}
+            <ul>
+                {% for title in recommendations %}
+                    <li>{{ title }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucune recommandation disponible pour le film saisi.</p>
+        {% endif %}
+
+        <p><a href="/">Retour à la page d'accueil</a></p>
+    </div>
+</body>
+</html>

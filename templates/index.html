@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Les balises head restent les mêmes -->
+</head>
+<body>
+    <div class="container">
+        {% if logged_in %}
+            <p>Connecté en tant que {{ username }}</p>
+            
+            <!-- Ajouter un lien vers la page de recommandations -->
+            <a href="{{ url_for('recommendations') }}">Recommandations de films</a>
+
+            <!-- Ajouter un lien vers la page de gestion des films de l'utilisateur -->
+            <a href="{{ url_for('user_movies') }}">Gérer mes films</a>
+            
+            <!-- Ajouter un lien vers la page de visualisation de tous les films -->
+            <a href="{{ url_for('films') }}">Tous les films</a>
+            
+            <a href="/logout">Déconnexion</a>
+        {% else %}
+            <h1>Bienvenue sur l'application Flask !</h1>
+            <p>Choisissez une option :</p>
+            <ul>
+                <li><a href="/register">S'inscrire</a></li>
+                <li><a href="/login">Se connecter</a></li>
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
